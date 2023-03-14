@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { getTrendingMovies } from "../services/MoviesAPI";
 import { useEffect, useState } from "react";
 
-export const MoviesList = ({onClick}) => {
+export const MoviesList = () => {
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState('');
 
@@ -25,9 +25,7 @@ export const MoviesList = ({onClick}) => {
         <ul>
             {movies.map(({ id, title }) => (
                 <Link to={`/movies/${id}`}>
-                    <li key={id}
-                        // onClick={() => onClick(id)}
-                    >
+                    <li key={id}>
                         {title}
                     </li>
                 </Link>

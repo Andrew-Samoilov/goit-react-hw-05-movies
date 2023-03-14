@@ -1,34 +1,58 @@
-import { Link, Outlet } from "react-router-dom";
-import { useParams } from "react-router-dom";
-// import { getProductById } from "../fakeAPI";
+import { useEffect, useState } from "react";
+import { Link, Outlet, useParams } from "react-router-dom";
+import { getMovieById } from "../services/MoviesAPI";
 
 export const MoviesDetails = () => {
     const { id } = useParams();
-    // const product = getProductById(id);
+    // const movie = getMovieById(id);
+
+    const [movie, setMovie] = useState([]);
+    const [error, setError] = useState('');
+
+    console.log({ movie });
+
+    useEffect(() => {
+        // console.log("Mouting phase: same when componentDidMount runs");
+        getMovieById(id)
+            .then((mve) => {
+                console.log(mve);
+                setMovie(mve);
+            })
+            .catch((err) => {
+                setError(err);
+                console.log('error :>> ', error);
+            });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    let mGenres = () => {
+        let res = '';
+        console.log(movie.genres);
+        if (movie.genres) {
+            res = movie.genres.map(g => <span key={g.id}>{g.name} </span>);
+        }
+        
+        return res;
+    }
+
     return (
         <main>
-        <img src="https://via.placeholder.com/960x240" alt="" width="100%"/>
-                <h2>
-                    MoviesDetails
-                     {id}
-                </h2>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
-                    sunt excepturi nesciunt iusto dignissimos assumenda ab quae cupiditate
-                    a, sed reprehenderit? Deleniti optio quasi, amet natus reiciendis
-                    atque fuga dolore? Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Impedit suscipit quisquam incidunt commodi fugiat aliquam
-                    praesentium ipsum quos unde voluptatum?
-                </p>
-                <ul>
-                    <li>
-                        <Link to="cast">Read about our Cast</Link>
-                    </li>
-                    <li>
-                        <Link to="reviews">Read reviews</Link>
-                    </li>
-                </ul>
-                <Outlet />
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.poster_path}`} />
+            <h2>{movie.original_title}</h2>
+            <i>{movie.tagline}</i>
+            <h3>Overview</h3>
+            <p>{movie.overview}</p>
+            <h3>Genres</h3>
+            <p>{mGenres()}</p>
+            <ul>
+                <li>
+                    <Link to="cast">Read about our Cast</Link>
+                </li>
+                <li>
+                    <Link to="reviews">Read reviews</Link>
+                </li>
+            </ul>
+            <Outlet />
         </main>
     );
 };
