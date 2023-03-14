@@ -1,4 +1,3 @@
-import { Link, Outlet } from "react-router-dom";
 // import { MoviesList } from "../components/moviesList";
 // import { getMovies } from "../fakeAPI";
 
@@ -20,16 +19,6 @@ export const Movies = () => {
                 dolorum illum voluptatum dolores! Quas perferendis quis alias excepturi
                 eaque voluptatibus eveniet error, nulla rem iusto?
             </p>
-            {/* тимчасово, щоб легше переходити */}
-            <ul>
-                <li>
-                    <Link to="cast">Read about our Cast</Link>
-                </li>
-                <li>
-                    <Link to="reviews">Read reviews</Link>
-                </li>
-            </ul>
-            <Outlet />
         </main>
     );
 };
