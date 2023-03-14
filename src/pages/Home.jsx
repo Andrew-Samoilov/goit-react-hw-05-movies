@@ -1,12 +1,15 @@
+import { MoviesList } from "../components/MoviesList";
 export const Home = () => {
+
+    const handleClick = (id) => {
+        console.log(id);
+    }
+
+
     return (
         <main>
             <h1>Trending today</h1>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-                laboriosam placeat incidunt rem illum animi nemo quibusdam quia
-                voluptatum voluptate.
-            </p>
+            <MoviesList onClick={handleClick} />
         </main>
     );
 };
