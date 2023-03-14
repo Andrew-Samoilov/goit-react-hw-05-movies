@@ -1,8 +1,8 @@
-import { getTrendingMovies } from "../services/getTrendingMovies";
+import { getTrendingMovies } from "../services/MoviesAPI";
 import { useEffect, useState } from "react";
 
 export const MoviesList = ({onClick}) => {
-    const [movies, setMuvies] = useState([]);
+    const [movies, setMovies] = useState([]);
     const [error, setError] = useState('');
 
     useEffect(() => {
@@ -10,13 +10,14 @@ export const MoviesList = ({onClick}) => {
         getTrendingMovies()
             .then((mve) => {
                 console.log(mve);
-                setMuvies(mve);
+                setMovies(mve);
             })
             .catch((err) => {
 
                 setError(err);
                 console.log('error :>> ', error);
             });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -24,7 +25,9 @@ export const MoviesList = ({onClick}) => {
             {movies.map(({ id, title }) => (
                 <li key={id}
                     onClick={() => onClick(id)}
-                >{title}</li>
+                >
+                    {title}
+                </li>
             ))
             }
         </ul>

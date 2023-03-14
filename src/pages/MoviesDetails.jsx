@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 // import { useParams } from "react-router-dom";
 // import { getProductById } from "../fakeAPI";
 
-export const MuviesDetails = () => {
+export const MoviesDetails = () => {
     // const { id } = useParams();
     // const product = getProductById(id);
     return (
@@ -10,7 +10,7 @@ export const MuviesDetails = () => {
         <img src="https://via.placeholder.com/960x240" alt="" width="100%"/>
             <div>
                 <h2>
-                    MuviesDetails
+                    MoviesDetails
                     {/* - {product.name} - {id} */}
                 </h2>
                 <p>

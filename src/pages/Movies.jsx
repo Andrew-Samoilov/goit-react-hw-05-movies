@@ -1,12 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
-// import { MuviesList } from "../components/muviesList";
-// import { getMuvies } from "../fakeAPI";
+// import { MoviesList } from "../components/moviesList";
+// import { getMovies } from "../fakeAPI";
 
-export const Muvies = () => {
-    // const muvies = getMuvies();
+export const Movies = () => {
+    // const movies = getMovies();
     return (
         <main>
-            <h1>Muvies</h1>
+            <h1>Movies</h1>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
                 laborum amet ab cumque sit nihil dolore modi error repudiandae

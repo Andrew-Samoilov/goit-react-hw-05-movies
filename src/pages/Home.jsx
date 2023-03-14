@@ -5,7 +5,6 @@ export const Home = () => {
         console.log(id);
     }
 
-
     return (
         <main>
             <h1>Trending today</h1>
