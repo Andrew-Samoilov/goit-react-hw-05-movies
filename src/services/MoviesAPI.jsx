@@ -17,3 +17,11 @@ export const getMovieById = async (id) => {
     return response.data;
 // https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
 }
+
+export const getMovieDetails = async (id) => {
+    const response = await axios
+        .get(`${BASE_URL}movie/${id}/credits?api_key=${API_KEY}&language=en-US`);
+    console.log(response.data);
+    return response.data;
+    // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
+}
