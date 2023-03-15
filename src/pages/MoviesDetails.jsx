@@ -26,33 +26,37 @@ export const MoviesDetails = () => {
     }, []);
 
     let mGenres = () => {
-        let res = '';
-        console.log(movie.genres);
+        // console.log(movie.genres);
         if (movie.genres) {
-            res = movie.genres.map(g => <span key={g.id}>{g.name} </span>);
+            return movie.genres.map(g => <span key={g.id}>{g.name} </span>);
         }
-        
-        return res;
     }
 
-    return (
-        <main>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.poster_path}`} />
-            <h2>{movie.original_title}</h2>
-            <i>{movie.tagline}</i>
-            <h3>Overview</h3>
-            <p>{movie.overview}</p>
-            <h3>Genres</h3>
-            <p>{mGenres()}</p>
-            <ul>
-                <li>
-                    <Link to="cast">Read about our Cast</Link>
-                </li>
-                <li>
-                    <Link to="reviews">Read reviews</Link>
-                </li>
-            </ul>
-            <Outlet />
-        </main>
-    );
+    // let mYear = () => {
+    //     if (movie.release_date) {      
+    //         return movie.release_date.slice(0, 4);
+    //     }  
+    // }
+
+return (
+    <main>
+        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.poster_path}`} />
+        {/* <h2>{movie.original_title} ({mYear()})</h2> */}
+        <h2>{movie.original_title} ({movie.release_date&& movie.release_date.slice(0, 4)})</h2>
+        <i>{movie.tagline}</i>
+        <h3>Overview</h3>
+        <p>{movie.overview}</p>
+        <h3>Genres</h3>
+        <p>{mGenres()}</p>
+        <ul>
+            <li>
+                <Link to="cast">Read about our Cast</Link>
+            </li>
+            <li>
+                <Link to="reviews">Read reviews</Link>
+            </li>
+        </ul>
+        <Outlet />
+    </main>
+);
 };
