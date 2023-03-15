@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 import { getMovieById } from "../services/MoviesAPI";
 
+
 export const MoviesDetails = () => {
     const { id } = useParams();
     // const movie = getMovieById(id);
@@ -32,31 +33,25 @@ export const MoviesDetails = () => {
         }
     }
 
-    // let mYear = () => {
-    //     if (movie.release_date) {      
-    //         return movie.release_date.slice(0, 4);
-    //     }  
-    // }
+    return (
+        <main>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.poster_path}`} />
+            <h2>{movie.original_title} ({movie.release_date && movie.release_date.slice(0, 4)})</h2>
+            <i>{movie.tagline}</i>
+            <h3>Overview</h3>
+            <p>{movie.overview}</p>
+            <h3>Genres</h3>
+            <p>{mGenres()}</p>
+            <ul>
+                <li>
+                    <Link to="cast">Read about our Cast</Link>
+                </li>
+                <li>
+                    <Link to="reviews">Read reviews</Link>
+                </li>
+            </ul>
+            <Outlet />
 
-return (
-    <main>
-        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.poster_path}`} />
-        {/* <h2>{movie.original_title} ({mYear()})</h2> */}
-        <h2>{movie.original_title} ({movie.release_date&& movie.release_date.slice(0, 4)})</h2>
-        <i>{movie.tagline}</i>
-        <h3>Overview</h3>
-        <p>{movie.overview}</p>
-        <h3>Genres</h3>
-        <p>{mGenres()}</p>
-        <ul>
-            <li>
-                <Link to="cast">Read about our Cast</Link>
-            </li>
-            <li>
-                <Link to="reviews">Read reviews</Link>
-            </li>
-        </ul>
-        <Outlet />
-    </main>
-);
+        </main>
+    );
 };
