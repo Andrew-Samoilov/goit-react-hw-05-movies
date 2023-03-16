@@ -25,3 +25,11 @@ export const getMovieDetails = async (id) => {
     return response.data;
     // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
 }
+
+export const getMovieReviews = async (id) => {
+    const response = await axios
+        .get(`${BASE_URL}movie/${id}/reviews?api_key=${API_KEY}&language=en-US`);
+    console.log(response.data);
+    return response.data;
+    // https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
+}

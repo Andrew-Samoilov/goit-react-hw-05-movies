@@ -14,18 +14,17 @@ export const MoviesList = () => {
                 setMovies(mve);
             })
             .catch((err) => {
-
                 setError(err);
                 console.log('error :>> ', error);
             });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <ul>
             {movies.map(({ id, title }) => (
                 <Link to={`/movies/${id}`}>
-                    <li key={id}>
+                    <li key={id }>
                         {title}
                     </li>
                 </Link>

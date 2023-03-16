@@ -36,12 +36,14 @@ export const MoviesDetails = () => {
     return (
         <main>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.poster_path}`} />
+            <div>
             <h2>{movie.original_title} ({movie.release_date && movie.release_date.slice(0, 4)})</h2>
             <i>{movie.tagline}</i>
             <h3>Overview</h3>
             <p>{movie.overview}</p>
             <h3>Genres</h3>
             <p>{mGenres()}</p>
+            
             <ul>
                 <li>
                     <Link to="cast">Read about our Cast</Link>
@@ -49,9 +51,11 @@ export const MoviesDetails = () => {
                 <li>
                     <Link to="reviews">Read reviews</Link>
                 </li>
-            </ul>
+                </ul>
+            </div>
+            
             <Outlet />
-
+            
         </main>
     );
 };
