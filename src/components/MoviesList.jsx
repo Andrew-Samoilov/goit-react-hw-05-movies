@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getTrendingMovies } from "../services/MoviesAPI";
 import { useEffect, useState } from "react";
 
@@ -20,10 +20,12 @@ export const MoviesList = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const location = useLocation();
+
     return (
         <ul>
             {movies.map(({ id, title }) => (
-                <Link to={`/movies/${id}`}>
+                <Link to={`/movies/${id}`} state={{ from: location }}>
                     <li key={Math.random() * id}>
                         {title}
                     </li>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { getSearchMovie } from "../services/MoviesAPI";
 import { SearchBox } from "../components/SearchBox";
@@ -29,18 +29,20 @@ export const MovieSearch = () => {
             });
     }, [error, searchParams]);
 
+    const location = useLocation();
+
     const mList = () => {
         console.log(movies);
         if (movies.total_results) {
             return movies.results.map(({ id, title }) => (
-                <Link to={`/movies/${id}`}>
+                <Link to={`/movies/${id}`} state={{ from: location }}>
                     <li key={Math.random() * id}>
                         {title}
                     </li>
                 </Link>))
         }
     }
-
+    
     return (
         <div>
             <SearchBox value={srcPararm} onChange={updateQueryString} />

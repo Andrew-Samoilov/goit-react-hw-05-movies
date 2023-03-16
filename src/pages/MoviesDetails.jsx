@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 import { getMovieById } from "../services/MoviesAPI";
 
 
 export const MoviesDetails = () => {
     const { id } = useParams();
     // const movie = getMovieById(id);
-
+    const location = useLocation();
+    const backLinkHref = location.state?.from ?? "/movies";
     const [movie, setMovie] = useState([]);
     const [error, setError] = useState('');
 
@@ -35,6 +36,8 @@ export const MoviesDetails = () => {
 
     return (
         <main>
+            <div><Link to={backLinkHref}>Go back</Link></div>
+            
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.poster_path}`} />
             <div>
             <h2>{movie.original_title} ({movie.release_date && movie.release_date.slice(0, 4)})</h2>
