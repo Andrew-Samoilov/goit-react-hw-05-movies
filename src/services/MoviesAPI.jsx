@@ -10,6 +10,14 @@ export const getTrendingMovies = async () => {
 // https://api.themoviedb.org/3/trending/movie/week?api_key=50540b41e66ef631d8d57e13679f9024
 };
 
+export const getSearchMovie = async (src) => {
+    const response = await axios
+        .get(`${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${src}&page=1&include_adult=true`);
+    console.log(response.data);
+    return response.data;
+    // https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=true
+}
+
 export const getMovieById = async (id) => {
     const response = await axios
         .get(`${BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`);
