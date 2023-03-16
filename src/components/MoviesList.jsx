@@ -24,7 +24,7 @@ export const MoviesList = () => {
         <ul>
             {movies.map(({ id, title }) => (
                 <Link to={`/movies/${id}`}>
-                    <li key={id }>
+                    <li key={Math.floor(Math.random() * id) }>
                         {title}
                     </li>
                 </Link>

@@ -28,7 +28,8 @@ export const Cast = () => {
         if (cast.cast) {
             return (cast.cast.map(a => <li key={a.id + a.credit_id}>
                 <h3>{a.original_name}</h3>
-                <img src={`https://image.tmdb.org/t/p/w500/${a.profile_path}`} alt={`${a.original_name}`}/>
+                {a.profile_path && (<img src={`https://image.tmdb.org/t/p/w500/${a.profile_path}`} alt={`${a.original_name}`} />)}
+                
                 <p>Character: {a.character}</p>
             </li>));
         }
@@ -39,13 +40,7 @@ export const Cast = () => {
             <h2>Our Cast</h2>
             <ul>
             {mCast()}
-            </ul>
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, nesciunt
-                veniam. Excepturi itaque, voluptates fugiat perspiciatis quo saepe! Iste
-                eaque porro eveniet error dicta, modi ipsum hic quis minima inventore.
-            </p>
-            
+            </ul>     
         </section>
     );
 };
