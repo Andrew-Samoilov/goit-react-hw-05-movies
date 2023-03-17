@@ -1,6 +1,6 @@
 import { MovieSearch } from "../components/MovieSearch";
 
-export const Movies = () => {
+const Movies = () => {
     // const movies = getMovies();
     return (
         <main>
@@ -9,3 +9,5 @@ export const Movies = () => {
         </main>
     );
 };
+
+export default Movies;

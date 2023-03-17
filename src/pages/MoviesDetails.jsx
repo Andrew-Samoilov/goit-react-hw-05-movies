@@ -1,9 +1,9 @@
+import { Suspense } from "react";
 import { useEffect, useState } from "react";
 import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 import { getMovieById } from "../services/MoviesAPI";
 
-
-export const MoviesDetails = () => {
+const MoviesDetails = () => {
     const { id } = useParams();
     // const movie = getMovieById(id);
     const location = useLocation();
@@ -57,8 +57,12 @@ export const MoviesDetails = () => {
                 </ul>
             </div>
             
-            <Outlet />
+            <Suspense fallback={<div>Loading subpage...</div>}>
+                <Outlet />
+            </Suspense>
             
         </main>
     );
 };
+
+export default MoviesDetails;
